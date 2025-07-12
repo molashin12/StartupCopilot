@@ -53,7 +53,7 @@ export default function Home() {
       icon: Brain,
       title: "AI-Powered Analysis",
       description: "Advanced algorithms analyze your business idea and provide instant viability scores with market insights.",
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-blue-500 to-emerald-500"
     },
     {
       icon: Target,
@@ -77,7 +77,7 @@ export default function Home() {
       icon: Rocket,
       title: "Growth Strategy",
       description: "Personalized roadmaps and growth strategies tailored to your industry and market.",
-      gradient: "from-indigo-500 to-purple-500"
+      gradient: "from-indigo-500 to-blue-500"
     },
     {
       icon: BarChart3,
@@ -105,7 +105,7 @@ export default function Home() {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center">
-                  <GlowIcon color="purple">
+                  <GlowIcon color="blue">
                     <Sparkles className="w-5 h-5" />
                   </GlowIcon>
                 </div>
@@ -231,7 +231,7 @@ export default function Home() {
                   <span className="drop-shadow-sm">Free Forever Plan</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-400 drop-shadow-sm" />
+                  <CheckCircle className="w-4 h-4 text-emerald-400 drop-shadow-sm" />
                   <span className="drop-shadow-sm">Setup in 2 Minutes</span>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function Home() {
             <div className="text-center mb-20">
               <AnimatedBorder className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
                 <div className="flex items-center justify-center mr-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
+                  <Sparkles className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="text-sm font-medium text-white drop-shadow-sm">Powerful Features</span>
               </AnimatedBorder>
@@ -285,15 +285,15 @@ export default function Home() {
                 return (
                   <GlassCard 
                     key={index}
-                    className="group relative overflow-hidden hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:-translate-y-2"
+                    className="group relative overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2"
                   >
                     <CardHeader className="relative text-center">
                       <div className="flex justify-center mb-6">
-                        <GlowIcon color={index % 2 === 0 ? 'purple' : 'pink'} className="p-4">
+                        <GlowIcon color={index % 2 === 0 ? 'blue' : 'emerald'} className="p-4">
                           <Icon className="h-12 w-12" />
                         </GlowIcon>
                       </div>
-                      <CardTitle className="text-xl mb-3 text-white group-hover:text-purple-200 transition-colors duration-300 drop-shadow-sm">
+                      <CardTitle className="text-xl mb-3 text-white group-hover:text-blue-200 transition-colors duration-300 drop-shadow-sm">
                     {feature.title}
                   </CardTitle>
                   <CardDescription className="text-base leading-relaxed text-white/90 drop-shadow-sm">
@@ -385,7 +385,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="flex items-center space-x-2 mb-4 md:mb-0">
                   <div className="flex items-center justify-center">
-                    <GlowIcon color="purple">
+                    <GlowIcon color="blue">
                       <Sparkles className="w-5 h-5" />
                     </GlowIcon>
                   </div>

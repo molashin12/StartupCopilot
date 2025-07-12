@@ -77,7 +77,7 @@ export default function ReportsPage() {
       change: '+5.7%',
       trend: 'up',
       icon: TrendingUp,
-      color: 'purple'
+      color: 'blue'
     }
   ];
 
@@ -147,18 +147,18 @@ export default function ReportsPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'text-green-400';
-      case 'in-progress': return 'text-yellow-400';
-      case 'pending': return 'text-gray-400';
+      case 'completed': return 'text-emerald-400';
+      case 'in-progress': return 'text-blue-400';
+      case 'pending': return 'text-slate-400';
       default: return 'text-white';
     }
   };
 
   const getStatusBadge = (status: string) => {
     const colors = {
-      completed: 'bg-green-500/20 text-green-400 border-green-500/30',
-      'in-progress': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-      pending: 'bg-gray-500/20 text-gray-400 border-gray-500/30'
+      completed: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+      'in-progress': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+      pending: 'bg-slate-500/20 text-slate-400 border-slate-500/30'
     };
     
     return (
@@ -187,7 +187,7 @@ export default function ReportsPage() {
               <select 
                 value={selectedPeriod}
                 onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 focus:border-purple-400 focus:ring-purple-400/20"
+                className="bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 focus:border-blue-400 focus:ring-blue-400/20"
               >
                 <option value="7d" className="bg-gray-800">Last 7 days</option>
                 <option value="30d" className="bg-gray-800">Last 30 days</option>
@@ -235,7 +235,7 @@ export default function ReportsPage() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <GlowIcon color={index % 2 === 0 ? 'purple' : 'pink'}>
+                          <GlowIcon color={index % 2 === 0 ? 'blue' : 'emerald'}>
                             <Icon className="w-5 h-5" />
                           </GlowIcon>
                           <span className="text-white/80 text-sm font-medium">{metric.title}</span>
@@ -272,7 +272,7 @@ export default function ReportsPage() {
               <GlassCard className="p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <GlowIcon color="purple">
+                    <GlowIcon color="blue">
                       <LineChart className="w-5 h-5" />
                     </GlowIcon>
                     <div>
@@ -294,7 +294,7 @@ export default function ReportsPage() {
                     return (
                       <div key={index} className="flex flex-col items-center gap-2 flex-1">
                         <div 
-                          className="w-full bg-gradient-to-t from-purple-500 to-pink-500 rounded-t-lg transition-all duration-1000 hover:from-purple-400 hover:to-pink-400"
+                          className="w-full bg-gradient-to-t from-blue-500 to-emerald-500 rounded-t-lg transition-all duration-1000 hover:from-blue-400 hover:to-emerald-400"
                           style={{ height: `${height}%` }}
                         />
                         <span className="text-white/60 text-xs">{data.month}</span>
@@ -308,7 +308,7 @@ export default function ReportsPage() {
               <GlassCard className="p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <GlowIcon color="pink">
+                    <GlowIcon color="emerald">
                       <PieChart className="w-5 h-5" />
                     </GlowIcon>
                     <div>
@@ -326,7 +326,7 @@ export default function ReportsPage() {
                 {/* Simulated Pie Chart */}
                 <div className="flex items-center justify-center h-64">
                   <div className="relative w-48 h-48">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-80" />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-emerald-500 to-slate-500 opacity-80" />
                     <div className="absolute inset-4 rounded-full bg-gray-900/80 flex items-center justify-center">
                       <div className="text-center">
                         <GradientText variant="primary" className="text-2xl font-bold">
@@ -344,7 +344,7 @@ export default function ReportsPage() {
           {/* Reports List */}
           <Section>
             <div className="flex items-center gap-3 mb-8">
-              <GlowIcon color="purple">
+              <GlowIcon color="blue">
                 <Briefcase className="w-6 h-6" />
               </GlowIcon>
               <GradientText variant="primary" className="text-3xl font-bold">
@@ -357,10 +357,10 @@ export default function ReportsPage() {
                 const Icon = report.icon;
                 
                 return (
-                  <GlassCard key={index} className="p-6 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
+                  <GlassCard key={index} className="p-6 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-4 flex-1">
-                        <GlowIcon color={index % 2 === 0 ? 'purple' : 'pink'}>
+                        <GlowIcon color={index % 2 === 0 ? 'blue' : 'emerald'}>
                           <Icon className="w-6 h-6" />
                         </GlowIcon>
                         

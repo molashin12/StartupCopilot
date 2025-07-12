@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,6 +28,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onToggleMode }) => {
   const [isLoading, setIsLoading] = useState(false);
   
   const { signUp, signInWithGoogle } = useAuth();
+  const router = useRouter();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -62,6 +64,9 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onToggleMode }) => {
       // Create user profile in Firestore
       // Note: In a real app, you'd want to get the user ID from the auth result
       // and handle this in a more robust way
+      
+      // Redirect to dashboard after successful signup
+      router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to create account');
     } finally {
@@ -75,6 +80,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onToggleMode }) => {
 
     try {
       await signInWithGoogle();
+      // Redirect to dashboard after successful Google signup
+      router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to sign up with Google');
     } finally {
