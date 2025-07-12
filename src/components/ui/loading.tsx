@@ -8,9 +8,9 @@ const spinnerVariants = cva(
     variants: {
       variant: {
         default: 'border-2 border-current border-t-transparent',
-        gradient: 'border-4 border-transparent bg-gradient-to-r from-purple-500 to-pink-500 rounded-full',
-        dots: 'border-4 border-purple-200 border-t-purple-500 dark:border-purple-800 dark:border-t-purple-400',
-        glow: 'border-4 border-purple-500/30 border-t-purple-500 shadow-lg shadow-purple-500/50',
+        gradient: 'border-4 border-transparent bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full',
+        dots: 'border-4 border-blue-200 border-t-blue-500 dark:border-blue-800 dark:border-t-blue-400',
+        glow: 'border-4 border-blue-500/30 border-t-blue-500 shadow-lg shadow-blue-500/50',
       },
       size: {
         sm: 'h-4 w-4',
@@ -45,7 +45,7 @@ export function LoadingSpinner({ size = 'md', variant = 'default', className }: 
         role="status"
         aria-label="Loading"
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-75" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 opacity-75" />
         <div className="absolute inset-1 rounded-full bg-background" />
         <span className="sr-only">Loading...</span>
       </div>
@@ -71,8 +71,8 @@ interface LoadingDotsProps {
 export function LoadingDots({ className, variant = 'default' }: LoadingDotsProps) {
   const dotClasses = {
     default: 'h-2 w-2 bg-current rounded-full animate-pulse',
-    gradient: 'h-2 w-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-bounce',
-    glow: 'h-2 w-2 bg-purple-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50',
+    gradient: 'h-2 w-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full animate-bounce',
+    glow: 'h-2 w-2 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50',
   };
 
   return (
@@ -93,7 +93,7 @@ interface LoadingSkeletonProps {
 export function LoadingSkeleton({ className, lines = 3, variant = 'default' }: LoadingSkeletonProps) {
   const skeletonClasses = {
     default: 'h-4 bg-muted rounded animate-pulse',
-    gradient: 'h-4 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded animate-pulse',
+    gradient: 'h-4 bg-gradient-to-r from-blue-100 to-emerald-100 dark:from-blue-900/20 dark:to-emerald-900/20 rounded animate-pulse',
     shimmer: 'h-4 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 rounded animate-pulse bg-[length:200%_100%] animate-shimmer',
   };
 
@@ -124,7 +124,7 @@ export function LoadingCard({ className, variant = 'default' }: LoadingCardProps
 
   const skeletonClasses = {
     default: 'bg-muted rounded animate-pulse',
-    gradient: 'bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded animate-pulse',
+    gradient: 'bg-gradient-to-r from-blue-100 to-emerald-100 dark:from-blue-900/20 dark:to-emerald-900/20 rounded animate-pulse',
     glass: 'bg-white/20 rounded animate-pulse',
   };
 
@@ -155,7 +155,7 @@ interface LoadingOverlayProps {
 export function LoadingOverlay({ isLoading, children, message, className, variant = 'default' }: LoadingOverlayProps) {
   const overlayClasses = {
     default: 'absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50',
-    gradient: 'absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-md flex items-center justify-center z-50',
+    gradient: 'absolute inset-0 bg-gradient-to-br from-blue-500/20 to-emerald-500/20 backdrop-blur-md flex items-center justify-center z-50',
     glass: 'absolute inset-0 bg-white/10 backdrop-blur-lg flex items-center justify-center z-50',
   };
 

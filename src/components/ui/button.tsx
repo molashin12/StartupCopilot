@@ -8,13 +8,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25',
+        default: 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white hover:from-blue-600 hover:to-emerald-600 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25',
         destructive: 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25',
-        outline: 'border-2 border-purple-200 bg-background hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:border-purple-800 dark:hover:from-purple-950 dark:hover:to-pink-950 hover:scale-105 hover:border-purple-300 dark:hover:border-purple-700',
+        outline: 'border-2 border-blue-200 bg-background hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 dark:border-blue-800 dark:hover:from-blue-950 dark:hover:to-emerald-950 hover:scale-105 hover:border-blue-300 dark:hover:border-blue-700',
         secondary: 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-900 hover:from-gray-200 hover:to-gray-300 dark:from-gray-800 dark:to-gray-700 dark:text-gray-100 dark:hover:from-gray-700 dark:hover:to-gray-600 hover:scale-105',
-        ghost: 'hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-950 dark:hover:to-pink-950 hover:scale-105',
-        link: 'text-purple-600 underline-offset-4 hover:underline hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300',
-        gradient: 'bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white hover:from-purple-600 hover:via-pink-600 hover:to-purple-600 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 animate-gradient-x',
+        ghost: 'hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 dark:hover:from-blue-950 dark:hover:to-emerald-950 hover:scale-105',
+        link: 'text-blue-600 underline-offset-4 hover:underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300',
+        gradient: 'bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 text-white hover:from-blue-600 hover:via-emerald-600 hover:to-blue-600 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 animate-gradient-x',
         glass: 'bg-white/10 backdrop-blur-md border border-white/20 text-white drop-shadow-sm hover:bg-white/20 hover:scale-105 hover:shadow-lg hover:text-white',
       },
       size: {

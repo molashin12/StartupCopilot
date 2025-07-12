@@ -10,7 +10,7 @@ const cardVariants = cva(
         default: 'bg-card border-border hover:shadow-xl hover:scale-[1.02]',
         gradient: 'bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-md border-white/20 dark:border-gray-700/30 hover:shadow-2xl hover:scale-[1.02] hover:from-white/90 hover:to-white/70 dark:hover:from-gray-900/90 dark:hover:to-gray-800/70',
         glass: 'bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 hover:shadow-2xl hover:scale-[1.02]',
-        outline: 'border-2 border-purple-200 dark:border-purple-800 bg-transparent hover:bg-gradient-to-br hover:from-purple-50/50 hover:to-pink-50/50 dark:hover:from-purple-950/50 dark:hover:to-pink-950/50 hover:border-purple-300 dark:hover:border-purple-700 hover:shadow-xl hover:scale-[1.02]',
+        outline: 'border-2 border-blue-200 dark:border-blue-800 bg-transparent hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-emerald-50/50 dark:hover:from-blue-950/50 dark:hover:to-emerald-950/50 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-xl hover:scale-[1.02]',
         elevated: 'bg-card border-border shadow-2xl hover:shadow-3xl hover:scale-[1.02] hover:-translate-y-1',
       },
     },

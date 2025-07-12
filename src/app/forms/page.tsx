@@ -199,7 +199,7 @@ export default function FormsPage() {
                 return (
                   <GlassCard key={sectionIndex} className="p-8">
                     <div className="flex items-center gap-4 mb-6">
-                      <GlowIcon color={sectionIndex % 2 === 0 ? 'purple' : 'pink'}>
+                      <GlowIcon color={sectionIndex % 2 === 0 ? 'blue' : 'emerald'}>
                         <SectionIcon className="w-6 h-6" />
                       </GlowIcon>
                       <div>
@@ -224,7 +224,7 @@ export default function FormsPage() {
                             >
                               <FieldIcon className="w-4 h-4" />
                               {field.label}
-                              {field.required && <span className="text-pink-400">*</span>}
+                              {field.required && <span className="text-emerald-400">*</span>}
                             </Label>
                             
                             <div className="relative">
@@ -238,9 +238,9 @@ export default function FormsPage() {
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(field.name, e.target.value)}
                                     className={`
                                       bg-white/10 border-white/20 text-white placeholder:text-white/50
-                                      focus:border-purple-400 focus:ring-purple-400/20
+                                      focus:border-blue-400 focus:ring-blue-400/20
                                       ${hasError ? 'border-red-400 focus:border-red-400' : ''}
-                                      ${isValid ? 'border-green-400' : ''}
+                                      ${isValid ? 'border-emerald-400' : ''}
                                       pr-20
                                     `}
                                     required={field.required}
@@ -270,9 +270,9 @@ export default function FormsPage() {
                                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                                   className={`
                                     bg-white/10 border-white/20 text-white placeholder:text-white/50
-                                    focus:border-purple-400 focus:ring-purple-400/20 min-h-[120px]
+                                    focus:border-blue-400 focus:ring-blue-400/20 min-h-[120px]
                                     ${hasError ? 'border-red-400 focus:border-red-400' : ''}
-                                    ${isValid ? 'border-green-400' : ''}
+                                    ${isValid ? 'border-emerald-400' : ''}
                                   `}
                                   required={field.required}
                                 />
@@ -285,9 +285,9 @@ export default function FormsPage() {
                                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                                   className={`
                                     bg-white/10 border-white/20 text-white placeholder:text-white/50
-                                    focus:border-purple-400 focus:ring-purple-400/20
+                                    focus:border-blue-400 focus:ring-blue-400/20
                                     ${hasError ? 'border-red-400 focus:border-red-400' : ''}
-                                    ${isValid ? 'border-green-400 pr-10' : ''}
+                                    ${isValid ? 'border-emerald-400 pr-10' : ''}
                                   `}
                                   required={field.required}
                                 />
@@ -315,7 +315,7 @@ export default function FormsPage() {
               {/* Project Description */}
               <GlassCard className="p-8">
                 <div className="flex items-center gap-4 mb-6">
-                  <GlowIcon color="purple">
+                  <GlowIcon color="blue">
                     <FileText className="w-6 h-6" />
                   </GlowIcon>
                   <div>
@@ -336,7 +336,7 @@ export default function FormsPage() {
                     placeholder="Share your vision, target market, unique value proposition, and what problem you're solving..."
                     value={formData.description}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleInputChange('description', e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-purple-400 focus:ring-purple-400/20 min-h-[150px]"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-blue-400 focus:ring-blue-400/20 min-h-[150px]"
                   />
                 </div>
               </GlassCard>
@@ -379,11 +379,11 @@ export default function FormsPage() {
               {/* Terms and Privacy */}
               <div className="text-center text-sm text-white/60">
                 By creating an account, you agree to our{' '}
-                <a href="#" className="text-purple-400 hover:text-purple-300 underline">
+                <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
                   Terms of Service
                 </a>{' '}
                 and{' '}
-                <a href="#" className="text-purple-400 hover:text-purple-300 underline">
+                <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
                   Privacy Policy
                 </a>
               </div>

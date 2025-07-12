@@ -88,7 +88,7 @@ export function PageHeader({ title, description, children, className, gradient =
       <div className="space-y-2">
         <h1 className={cn(
           'text-3xl font-bold tracking-tight sm:text-4xl',
-          gradient && 'bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent'
+          gradient && 'bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent'
         )}>
           {title}
         </h1>
@@ -124,7 +124,7 @@ export function Navigation({ items, className }: NavigationProps) {
           className={cn(
             'flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
             item.active
-              ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-600 dark:text-purple-400 shadow-lg'
+              ? 'bg-gradient-to-r from-blue-500/20 to-emerald-500/20 text-blue-600 dark:text-blue-400 shadow-lg'
               : 'text-muted-foreground hover:text-foreground hover:bg-muted hover:shadow-md'
           )}
         >

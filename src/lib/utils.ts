@@ -56,3 +56,64 @@ export function slugify(text: string): string {
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
+
+export function formatRelativeTime(timestamp: any): string {
+  if (!timestamp) return 'Unknown';
+  
+  let date: Date;
+  
+  // Handle Firestore Timestamp
+  if (timestamp && typeof timestamp.toDate === 'function') {
+    date = timestamp.toDate();
+  } 
+  // Handle Date object
+  else if (timestamp instanceof Date) {
+    date = timestamp;
+  }
+  // Handle timestamp number (milliseconds)
+  else if (typeof timestamp === 'number') {
+    date = new Date(timestamp);
+  }
+  // Handle ISO string
+  else if (typeof timestamp === 'string') {
+    date = new Date(timestamp);
+  }
+  else {
+    return 'Unknown';
+  }
+  
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+  
+  if (diffInSeconds < 60) {
+    return 'just now';
+  }
+  
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) {
+    return `${diffInMinutes} minute${diffInMinutes === 1 ? '' : 's'} ago`;
+  }
+  
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) {
+    return `${diffInHours} hour${diffInHours === 1 ? '' : 's'} ago`;
+  }
+  
+  const diffInDays = Math.floor(diffInHours / 24);
+  if (diffInDays < 7) {
+    return `${diffInDays} day${diffInDays === 1 ? '' : 's'} ago`;
+  }
+  
+  const diffInWeeks = Math.floor(diffInDays / 7);
+  if (diffInWeeks < 4) {
+    return `${diffInWeeks} week${diffInWeeks === 1 ? '' : 's'} ago`;
+  }
+  
+  const diffInMonths = Math.floor(diffInDays / 30);
+  if (diffInMonths < 12) {
+    return `${diffInMonths} month${diffInMonths === 1 ? '' : 's'} ago`;
+  }
+  
+  const diffInYears = Math.floor(diffInDays / 365);
+  return `${diffInYears} year${diffInYears === 1 ? '' : 's'} ago`;
+}
