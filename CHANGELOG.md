@@ -11,16 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive Firebase Firestore index optimization
 - Enhanced error handling for database queries
 - Improved development workflow documentation
+- Enhanced form component styling with explicit background colors
 
 ### Fixed
 - Firebase Firestore index errors preventing dashboard functionality
 - Missing composite indexes for projects, users, reports, and feedback collections
 - Database query optimization issues
+- Dropdown menu transparency issues in Select components
+- CSS variable conflicts causing invisible dropdown backgrounds
+- Select component hover and focus states for better user interaction
 
 ### Changed
 - Updated firestore.indexes.json with all required composite indexes
 - Enhanced project documentation structure
 - Improved development setup instructions
+- Replaced CSS variable-based backgrounds with explicit solid colors in Select components
+- Updated Select component styling for better visibility and accessibility
+- Enhanced dropdown menu styling with proper shadows and borders
 
 ## [1.2.0] - 2024-12-19
 

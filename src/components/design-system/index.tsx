@@ -72,7 +72,7 @@ interface GradientBackgroundProps {
 
 export function GradientBackground({ children, className, variant = 'primary' }: GradientBackgroundProps) {
   const variants = {
-    primary: 'bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-slate-950 dark:via-blue-950 dark:to-emerald-950',
+    primary: 'bg-gradient-to-br from-slate-900 via-blue-900 to-emerald-900',
     glass: 'bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-900/80 dark:to-slate-800/60 backdrop-blur-md',
     glow: 'bg-gradient-to-br from-blue-500/10 via-transparent to-emerald-500/10',
   };

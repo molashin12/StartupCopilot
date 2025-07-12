@@ -166,7 +166,7 @@ export interface ProjectData extends BaseDocument {
   userId: string;
   progress: number;
   status: 'draft' | 'in-progress' | 'completed';
-  type: 'business-plan' | 'pitch-deck' | 'market-analysis';
+  type: 'business-plan' | 'pitch-deck' | 'market-analysis' | 'competitor-research' | 'financial-projections' | 'swot-analysis' | 'risk-assessment' | 'idea-validation' | 'content-generation';
   tags: string[];
   lastModified?: Timestamp;
   content?: {

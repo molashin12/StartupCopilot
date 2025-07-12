@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MainLayout, Container, Section, PageHeader } from '@/components/layout/main-layout';
+import { PageLayout, Container, Section, PageHeader, Navigation } from '@/components/layout/main-layout';
 import {
   GradientBackground,
   FloatingElements,
@@ -39,6 +39,12 @@ import {
 export default function ReportsPage() {
   const [selectedPeriod, setSelectedPeriod] = useState('30d');
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const navigationItems = [
+    { label: 'Dashboard', href: '/dashboard', active: false },
+    { label: 'Projects', href: '/projects', active: false },
+    { label: 'Report and Analytics', href: '/reports', active: true }
+  ];
 
   const handleRefresh = async () => {
     setIsRefreshing(true);
@@ -169,20 +175,26 @@ export default function ReportsPage() {
   };
 
   return (
-    <MainLayout withGradient gradientVariant="primary">
-      <GradientBackground variant="primary" className="min-h-screen">
-        <FloatingElements />
-        
-        <Container>
-          <PageHeader
-            title="Analytics & Reports"
-            description="Comprehensive insights and data-driven reports for your startup"
-            gradient
-            className="mb-8"
-          />
+    <PageLayout 
+      title="Analytics & Reports"
+      headerActions={<Navigation items={navigationItems} />}
+    >
+      <Container>
+        {/* Welcome Section */}
+        <div className="mb-12">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Analytics & <span className="text-blue-600">Reports</span>
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Comprehensive insights and data-driven reports for your startup
+            </p>
+          </div>
+        </div>
           
           {/* Action Bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <div className="mt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <div className="flex items-center gap-4">
               <select 
                 value={selectedPeriod}
@@ -221,71 +233,75 @@ export default function ReportsPage() {
                 Export
               </Button>
             </div>
+            </div>
           </div>
           
           {/* Key Metrics */}
-          <Section className="mb-12">
+          <div className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {metrics.map((metric, index) => {
                 const Icon = metric.icon;
                 const isPositive = metric.trend === 'up';
                 
                 return (
-                  <AnimatedBorder key={index} className="p-6">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <GlowIcon color={index % 2 === 0 ? 'blue' : 'emerald'}>
-                            <Icon className="w-5 h-5" />
-                          </GlowIcon>
-                          <span className="text-white/80 text-sm font-medium">{metric.title}</span>
-                        </div>
-                        
-                        <div className="space-y-1">
-                          <GradientText variant="primary" className="text-2xl font-bold">
-                            {metric.value}
-                          </GradientText>
+                  <Card key={index}>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="p-2 bg-blue-100 rounded-lg">
+                              <Icon className="w-5 h-5 text-blue-600" />
+                            </div>
+                            <span className="text-gray-600 text-sm font-medium">{metric.title}</span>
+                          </div>
                           
-                          <div className={`flex items-center gap-1 text-sm ${
-                            isPositive ? 'text-green-400' : 'text-red-400'
-                          }`}>
-                            {isPositive ? (
-                              <ArrowUpRight className="w-4 h-4" />
-                            ) : (
-                              <ArrowDownRight className="w-4 h-4" />
-                            )}
-                            {metric.change}
+                          <div className="space-y-1">
+                            <div className="text-2xl font-bold text-gray-900">
+                              {metric.value}
+                            </div>
+                            
+                            <div className={`flex items-center gap-1 text-sm ${
+                              isPositive ? 'text-green-600' : 'text-red-600'
+                            }`}>
+                              {isPositive ? (
+                                <ArrowUpRight className="w-4 h-4" />
+                              ) : (
+                                <ArrowDownRight className="w-4 h-4" />
+                              )}
+                              {metric.change}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </AnimatedBorder>
+                    </CardContent>
+                  </Card>
                 );
               })}
             </div>
-          </Section>
+          </div>
           
           {/* Charts Section */}
-          <Section className="mb-12">
+          <div className="mt-12">
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Revenue Chart */}
-              <GlassCard className="p-6">
+              <Card>
+                <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <GlowIcon color="blue">
-                      <LineChart className="w-5 h-5" />
-                    </GlowIcon>
-                    <div>
-                      <GradientText variant="primary" className="text-xl font-bold">
-                        Revenue Trend
-                      </GradientText>
-                      <p className="text-white/60 text-sm">Monthly revenue growth</p>
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-blue-100 rounded-lg">
+                        <LineChart className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          Revenue Trend
+                        </h3>
+                        <p className="text-gray-600 text-sm">Monthly revenue growth</p>
+                      </div>
                     </div>
+                    <Button variant="outline" size="sm">
+                      <Eye className="w-4 h-4" />
+                    </Button>
                   </div>
-                  <Button variant="glass" size="sm">
-                    <Eye className="w-4 h-4" />
-                  </Button>
-                </div>
                 
                 {/* Simulated Chart */}
                 <div className="h-64 flex items-end justify-between gap-2 px-4">
@@ -294,62 +310,65 @@ export default function ReportsPage() {
                     return (
                       <div key={index} className="flex flex-col items-center gap-2 flex-1">
                         <div 
-                          className="w-full bg-gradient-to-t from-blue-500 to-emerald-500 rounded-t-lg transition-all duration-1000 hover:from-blue-400 hover:to-emerald-400"
+                          className="w-full bg-gradient-to-t from-blue-500 to-blue-600 rounded-t-lg transition-all duration-1000 hover:from-blue-400 hover:to-blue-500"
                           style={{ height: `${height}%` }}
                         />
-                        <span className="text-white/60 text-xs">{data.month}</span>
+                        <span className="text-gray-600 text-xs">{data.month}</span>
                       </div>
                     );
                   })}
                 </div>
-              </GlassCard>
+                </CardContent>
+              </Card>
               
               {/* User Growth Chart */}
-              <GlassCard className="p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <GlowIcon color="emerald">
-                      <PieChart className="w-5 h-5" />
-                    </GlowIcon>
-                    <div>
-                      <GradientText variant="primary" className="text-xl font-bold">
-                        User Acquisition
-                      </GradientText>
-                      <p className="text-white/60 text-sm">Channel performance</p>
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-green-100 rounded-lg">
+                        <PieChart className="w-5 h-5 text-green-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          User Acquisition
+                        </h3>
+                        <p className="text-gray-600 text-sm">Channel performance</p>
+                      </div>
                     </div>
+                    <Button variant="outline" size="sm">
+                      <Eye className="w-4 h-4" />
+                    </Button>
                   </div>
-                  <Button variant="glass" size="sm">
-                    <Eye className="w-4 h-4" />
-                  </Button>
-                </div>
-                
-                {/* Simulated Pie Chart */}
-                <div className="flex items-center justify-center h-64">
-                  <div className="relative w-48 h-48">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-emerald-500 to-slate-500 opacity-80" />
-                    <div className="absolute inset-4 rounded-full bg-gray-900/80 flex items-center justify-center">
-                      <div className="text-center">
-                        <GradientText variant="primary" className="text-2xl font-bold">
-                          8,429
-                        </GradientText>
-                        <p className="text-white/60 text-sm">Total Users</p>
+                  
+                  {/* Simulated Pie Chart */}
+                  <div className="flex items-center justify-center h-64">
+                    <div className="relative w-48 h-48">
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-green-500 to-gray-500 opacity-80" />
+                      <div className="absolute inset-4 rounded-full bg-white flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            8,429
+                          </div>
+                          <p className="text-gray-600 text-sm">Total Users</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </GlassCard>
+                </CardContent>
+              </Card>
             </div>
-          </Section>
+          </div>
           
           {/* Reports List */}
-          <Section>
+          <div className="mt-12">
             <div className="flex items-center gap-3 mb-8">
-              <GlowIcon color="blue">
-                <Briefcase className="w-6 h-6" />
-              </GlowIcon>
-              <GradientText variant="primary" className="text-3xl font-bold">
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <Briefcase className="w-6 h-6 text-blue-600" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900">
                 Generated Reports
-              </GradientText>
+              </h2>
             </div>
             
             <div className="grid gap-6">
@@ -357,74 +376,77 @@ export default function ReportsPage() {
                 const Icon = report.icon;
                 
                 return (
-                  <GlassCard key={index} className="p-6 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-4 flex-1">
-                        <GlowIcon color={index % 2 === 0 ? 'blue' : 'emerald'}>
-                          <Icon className="w-6 h-6" />
-                        </GlowIcon>
-                        
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <GradientText variant="primary" className="text-xl font-bold">
-                              {report.title}
-                            </GradientText>
-                            {getStatusBadge(report.status)}
+                  <Card key={index} className="hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-start gap-4 flex-1">
+                          <div className={`p-2 rounded-lg ${
+                            index % 2 === 0 ? 'bg-blue-100' : 'bg-green-100'
+                          }`}>
+                            <Icon className={`w-6 h-6 ${
+                              index % 2 === 0 ? 'text-blue-600' : 'text-green-600'
+                            }`} />
                           </div>
                           
-                          <p className="text-white/80 mb-4">{report.description}</p>
-                          
-                          <div className="flex items-center gap-6 text-sm text-white/60">
-                            <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4" />
-                              {new Date(report.date).toLocaleDateString()}
+                          <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-2">
+                              <h3 className="text-xl font-bold text-gray-900">
+                                {report.title}
+                              </h3>
+                              {getStatusBadge(report.status)}
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Award className="w-4 h-4" />
-                              {report.type}
-                            </div>
-                          </div>
+                            
+                            <p className="text-gray-600 mb-4">{report.description}</p>
                           
-                          {/* Report Metrics */}
-                          <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-white/10">
-                            {Object.entries(report.metrics).map(([key, value], metricIndex) => (
-                              <div key={metricIndex} className="text-center">
-                                <div className="text-white/60 text-xs uppercase tracking-wide mb-1">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}
-                                </div>
-                                <div className="text-white font-semibold">{value}</div>
+                            <div className="flex items-center gap-6 text-sm text-gray-500">
+                              <div className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4" />
+                                {new Date(report.date).toLocaleDateString()}
                               </div>
-                            ))}
+                              <div className="flex items-center gap-2">
+                                <Award className="w-4 h-4" />
+                                {report.type}
+                              </div>
+                            </div>
+                            
+                            {/* Report Metrics */}
+                            <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-200">
+                              {Object.entries(report.metrics).map(([key, value], metricIndex) => (
+                                <div key={metricIndex} className="text-center">
+                                  <div className="text-gray-500 text-xs uppercase tracking-wide mb-1">
+                                    {key.replace(/([A-Z])/g, ' $1').trim()}
+                                  </div>
+                                  <div className="text-gray-900 font-semibold">{value}</div>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
+                        
+                        <div className="flex items-center gap-2 ml-4">
+                          <Button variant="outline" size="sm">
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                          <Button variant="outline" size="sm">
+                            <Download className="w-4 h-4" />
+                          </Button>
+                        </div>
                       </div>
-                      
-                      <div className="flex items-center gap-2 ml-4">
-                        <Button variant="glass" size="sm">
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                        <Button variant="glass" size="sm">
-                          <Download className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </GlassCard>
+                    </CardContent>
+                  </Card>
                 );
               })}
             </div>
             
             {/* Generate New Report */}
             <div className="mt-8 text-center">
-              <AnimatedBorder className="inline-block">
-                <Button variant="gradient" size="lg" className="px-8 py-3">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Generate New Report
-                </Button>
-              </AnimatedBorder>
+              <Button size="lg" className="px-8 py-3">
+                <Zap className="w-5 h-5 mr-2" />
+                Generate New Report
+              </Button>
             </div>
-          </Section>
+          </div>
         </Container>
-      </GradientBackground>
-    </MainLayout>
+    </PageLayout>
   );
 }
