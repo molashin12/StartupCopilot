@@ -50,27 +50,45 @@ In Firebase Console:
    - Add your domain to authorized domains
    - Configure OAuth consent screen
 
-### 5. Configure Firestore (Optional)
+### 5. Configure Firestore Database
 
-If using database features:
+**Required for full functionality:**
 1. **Go to Firestore Database**
 2. **Create database**
 3. **Choose security rules** (start in test mode for development)
+4. **Deploy composite indexes** (required for optimized queries):
+   ```bash
+   firebase deploy --only firestore:indexes
+   ```
 
-### 6. Restart Development Server
+### 6. Deploy Firebase Configuration
+
+**Deploy indexes and rules:**
+```bash
+# Deploy Firestore indexes (required)
+firebase deploy --only firestore:indexes
+
+# Deploy security rules (optional)
+firebase deploy --only firestore:rules
+```
+
+### 7. Restart Development Server
 
 ```bash
 npm run dev
 ```
 
-## Error Handling Improvements
+## Recent Improvements (December 2024)
 
 The application now includes:
 
+✅ **Database Optimization** - Composite indexes for fast queries
+✅ **Error Resolution** - Fixed all Firebase index errors
 ✅ **Graceful degradation** - App won't crash with missing config
 ✅ **Clear error messages** - Helpful warnings in console
 ✅ **Development-friendly** - Works with placeholder values
 ✅ **Type safety** - Proper TypeScript types
+✅ **Performance Monitoring** - Real-time query optimization
 
 ## Security Best Practices
 
@@ -114,6 +132,11 @@ service cloud.firestore {
    - Add your domain to Firebase authorized domains
    - Check Authentication → Settings → Authorized domains
 
+5. **Database Query Errors**
+   - Ensure Firestore indexes are deployed: `firebase deploy --only firestore:indexes`
+   - Check Firebase Console → Firestore → Indexes for index status
+   - Verify composite indexes are properly configured
+
 ### Development vs Production
 
 **Development (.env.local)**
@@ -132,10 +155,12 @@ NEXTAUTH_URL=https://yourdomain.com
 
 1. ✅ Configure Firebase project
 2. ✅ Update environment variables
-3. ✅ Test authentication flow
-4. 🔄 Set up Firestore security rules
-5. 🔄 Configure email templates
-6. 🔄 Set up production environment
+3. ✅ Deploy Firestore indexes
+4. ✅ Test authentication flow
+5. ✅ Verify database optimization
+6. 🔄 Set up Firestore security rules
+7. 🔄 Configure email templates
+8. 🔄 Set up production environment
 
 ## Support
 

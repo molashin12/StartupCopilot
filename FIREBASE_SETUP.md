@@ -5,9 +5,10 @@ This document provides a comprehensive guide for the Firebase integration in the
 ## 🔥 Firebase Services Integrated
 
 - **Authentication**: Email/password and Google OAuth
-- **Firestore Database**: User profiles, startups, and consultations
+- **Firestore Database**: User profiles, startups, and consultations with optimized composite indexes
 - **Analytics**: User behavior tracking
 - **Storage**: File uploads (configured but not implemented)
+- **Performance Optimization**: Composite indexes for fast query execution
 
 ## 📁 File Structure
 
@@ -69,7 +70,11 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-YXFWHXPMY8
 1. Navigate to **Firestore Database**
 2. Create database in **production mode**
 3. Choose your preferred region
-4. Set up the following security rules:
+4. **Deploy composite indexes** (required for optimized performance):
+   ```bash
+   firebase deploy --only firestore:indexes
+   ```
+5. Set up the following security rules:
 
 ```javascript
 rules_version = '2';
@@ -251,12 +256,14 @@ interface ConsultationData {
 
 ## 🚀 Next Steps
 
-1. **Wrap your app with AuthProvider** in `layout.tsx` or `_app.tsx`
-2. **Set up Firestore security rules** in Firebase Console
-3. **Enable Google OAuth** in Firebase Console
-4. **Test authentication flow** by visiting `/auth`
-5. **Implement user profile creation** after successful registration
-6. **Add role-based access control** to ProtectedRoute component
+1. **Deploy Firestore indexes** (required): `firebase deploy --only firestore:indexes`
+2. **Wrap your app with AuthProvider** in `layout.tsx` or `_app.tsx`
+3. **Set up Firestore security rules** in Firebase Console
+4. **Enable Google OAuth** in Firebase Console
+5. **Test authentication flow** by visiting `/auth`
+6. **Verify database optimization** in Firebase Console
+7. **Implement user profile creation** after successful registration
+8. **Add role-based access control** to ProtectedRoute component
 
 ## 📝 Testing
 
@@ -289,6 +296,11 @@ To test the Firebase integration:
    - Check Firestore security rules
    - Ensure user is authenticated
    - Verify document structure matches rules
+
+5. **"The query requires an index"**
+   - Deploy Firestore indexes: `firebase deploy --only firestore:indexes`
+   - Check Firebase Console → Firestore → Indexes for index status
+   - Verify composite indexes are properly configured
 
 ### Debug Mode
 
